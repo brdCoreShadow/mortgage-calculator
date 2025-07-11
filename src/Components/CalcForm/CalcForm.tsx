@@ -25,20 +25,23 @@ const CalcForm: React.FC = () => {
         <button type="button">Clear all</button>
       </SC.CalcTitleCon>
       <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="amount"></label>
+        <SC.AmountCon>
+          <label htmlFor="amount">
           <span>Mortgage Amount</span>
           <input type="text" id="amount" name="amount"/>
-        </div>
+          </label>
+        </SC.AmountCon>
          <div>
-          <label htmlFor="term"></label>
+          <label htmlFor="term">
           <span>Mortgage Term</span>
           <input type="text" id="term" name="term"/>
+          </label>
         </div>
          <div>
-          <label htmlFor="rate"></label>
+          <label htmlFor="rate">
           <span>Interest Rate</span>
           <input type="text" id="rate" name="rate"/>
+          </label>
         </div>
         <div>
             <div>
