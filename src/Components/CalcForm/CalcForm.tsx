@@ -4,8 +4,13 @@ import * as SC from "./CalcFormStyled";
 import { useFormik } from "formik";
 
 import caclcIcon from "../../assets/images/icon-calculator.svg";
+import { IMortgage } from "@/utils/types";
 
-const CalcForm: React.FC = () => {
+type Props = {
+  handleSubmit: (data: IMortgage) => void;
+};
+
+const CalcForm: React.FC<Props> = ({ handleSubmit }) => {
   const formik = useFormik({
     initialValues: {
       amount: "",
@@ -15,7 +20,13 @@ const CalcForm: React.FC = () => {
     },
     validationSchema: validationMortgageSchema,
     onSubmit: (values) => {
-      console.log("Submited values", values);
+      const formattedValues: IMortgage = {
+        amount: Number(values.amount),
+        term: Number(values.term),
+        rate: Number(values.rate),
+        type: values.type,
+      };
+      handleSubmit(formattedValues);
     },
   });
 
@@ -120,7 +131,7 @@ const CalcForm: React.FC = () => {
             </SC.ErrorCon>
           )}
         </SC.RadioCon>
-        <SC.SubmitBtn>
+        <SC.SubmitBtn type="submit">
           <img src={caclcIcon} alt="calculator" />
           <span>Calculate Repayments</span>
         </SC.SubmitBtn>
