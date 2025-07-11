@@ -284,3 +284,19 @@ border-radius: 24px;
     color:#133041
 }
 `
+
+export const ErrorCon = styled.div`
+position: absolute;
+bottom: 0;
+left: 0;
+
+transform: translate(0, 170%);
+
+& span{
+font-size: 12px;
+font-weight: 600;
+
+color:#FF3333;
+}
+
+`
