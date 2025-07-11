@@ -7,10 +7,28 @@ export const CalcFormCon = styled.div`
   padding-right: 24px;
 
   background-color: #fff;
+
+  @media (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    border-radius: 8px;
+  }
 `;
 
 export const CalcTitleCon = styled.div`
   margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 40px;
+  }
 
   & > h3 {
     margin-bottom: 8px;
@@ -20,6 +38,10 @@ export const CalcTitleCon = styled.div`
     line-height: 1.25;
 
     color: #133041;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
   }
 
   & > button {
@@ -31,6 +53,17 @@ export const CalcTitleCon = styled.div`
     color: #4e6e7e;
 
     border-bottom: 1px solid #4e6e7e;
+  }
+`;
+
+export const InputsCon = styled.div`
+  margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
 
@@ -96,6 +129,12 @@ export const AmountCon = styled.div`
 export const TermCon = styled.div`
   margin-bottom: 24px;
 
+  @media (min-width: 768px) {
+    width: 292px;
+    margin-bottom: 0;
+    margin-right: 24px;
+  }
+
   & span {
     font-size: 16px;
     font-weight: 500;
@@ -154,6 +193,13 @@ export const TermCon = styled.div`
 
 export const RateCon = styled.div`
   margin-bottom: 24px;
+
+
+    @media (min-width: 768px) {
+    width: 292px;
+    margin-bottom: 0;
+  }
+
 
   & span {
     font-size: 16px;
@@ -214,6 +260,10 @@ export const RateCon = styled.div`
 export const RadioCon = styled.div`
   margin-bottom: 24px;
 
+  @media (min-width: 768px){
+    margin-bottom: 40px;
+  }
+
   & h3 {
     margin-bottom: 12px;
 
@@ -251,52 +301,54 @@ export const RadioCon = styled.div`
     }
   }
 
-   & .active {
-   background-color: rgb(216, 219, 47, 0.3);
+  & .active {
+    background-color: rgb(216, 219, 47, 0.3);
 
     border-color: #d8db2f;
   }
 `;
 
 export const SubmitBtn = styled.button`
-width: 100%;
+  width: 100%;
 
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
-padding-top: 12px;
-padding-bottom: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 
-background-color: #D8DB2F;
+  background-color: #d8db2f;
 
-border-radius: 24px;
+  border-radius: 24px;
 
-& > span{
+@media (min-width: 768px){
+    width: 314px;
+}
 
+  & > span {
     margin-left: 12px;
 
     font-size: 18px;
     line-height: 1.25;
     font-weight: 700;
 
-    color:#133041
-}
-`
+    color: #133041;
+  }
+`;
 
 export const ErrorCon = styled.div`
-position: absolute;
-bottom: 0;
-left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-transform: translate(0, 170%);
+  transform: translate(0, 170%);
 
-& span{
-font-size: 12px;
-font-weight: 600;
+  & span {
+    font-size: 12px;
+    font-weight: 600;
 
-color:#FF3333;
-}
-
-`
+    color: #ff3333;
+  }
+`;

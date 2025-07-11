@@ -1,3 +1,5 @@
+import * as SC from "./AppStyled"
+
 import { useState } from "react";
 import CalcForm from "./Components/CalcForm/CalcForm";
 import { IMortgage } from "./utils/types";
@@ -12,12 +14,12 @@ function App() {
 const handleResetForm = () => setMortgage(null)
 
   return (
-    <div>
+    <SC.AppCon>
       <CalcForm handleSubmit={handleSubmit} handleResetForm={handleResetForm}/>
       <Result>
         {mortgage ? <ResultData mortgage={mortgage}/> : <ResultEmpty/>}
       </Result>
-    </div>
+    </SC.AppCon>
   );
 }
 

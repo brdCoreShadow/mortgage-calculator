@@ -8,7 +8,7 @@ import { IMortgage } from "@/utils/types";
 
 type Props = {
   handleSubmit: (data: IMortgage) => void;
-  handleResetForm: ()=>void;
+  handleResetForm: () => void;
 };
 
 const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
@@ -35,14 +35,18 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
     <SC.CalcFormCon>
       <SC.CalcTitleCon>
         <h3>Mortgage Calculator</h3>
-        <button type="button" onClick={(e) => {
-    formik.handleReset(e);
-    handleResetForm(); // <- This clears the mortgage data
-  }}>
+        <button
+          type="button"
+          onClick={(e) => {
+            formik.handleReset(e);
+            handleResetForm(); // <- This clears the mortgage data
+          }}
+        >
           Clear all
         </button>
       </SC.CalcTitleCon>
       <form onSubmit={formik.handleSubmit}>
+       
         <SC.AmountCon>
           <label htmlFor="amount">
             <span>Mortgage Amount</span>
@@ -61,6 +65,7 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
             )}
           </label>
         </SC.AmountCon>
+         <SC.InputsCon>
         <SC.TermCon>
           <label htmlFor="term">
             <span>Mortgage Term</span>
@@ -79,6 +84,7 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
             )}
           </label>
         </SC.TermCon>
+      
         <SC.RateCon>
           <label htmlFor="rate">
             <span>Interest Rate</span>
@@ -97,6 +103,7 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
             )}
           </label>
         </SC.RateCon>
+          </SC.InputsCon>
         <SC.RadioCon>
           <div>
             <h3>Mortgage Type</h3>
