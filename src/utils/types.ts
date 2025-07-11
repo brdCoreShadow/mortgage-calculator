@@ -4,3 +4,7 @@ export interface IMortgage {
   rate: number;
   type: string;
 }
+
+export type PropsChidren = {
+    children: React.ReactNode;
+}
