@@ -3,6 +3,8 @@ import * as SC from "./CalcFormStyled";
 
 import { useFormik } from "formik";
 
+import caclcIcon from "../../assets/images/icon-calculator.svg";
+
 const CalcForm: React.FC = () => {
   const formik = useFormik({
     initialValues: {
@@ -11,11 +13,10 @@ const CalcForm: React.FC = () => {
       rate: "",
       type: "",
     },
-    validationSchema:validationMortgageSchema,
-    onSubmit:(values) => {
-        console.log("Submited values", values);
-        
-    }
+    validationSchema: validationMortgageSchema,
+    onSubmit: (values) => {
+      console.log("Submited values", values);
+    },
   });
 
   return (
@@ -27,36 +28,57 @@ const CalcForm: React.FC = () => {
       <form onSubmit={formik.handleSubmit}>
         <SC.AmountCon>
           <label htmlFor="amount">
-          <span>Mortgage Amount</span>
-          <input type="text" id="amount" name="amount"/>
+            <span>Mortgage Amount</span>
+            <input type="text" id="amount" name="amount" />
           </label>
         </SC.AmountCon>
-         <div>
+        <SC.TermCon>
           <label htmlFor="term">
-          <span>Mortgage Term</span>
-          <input type="text" id="term" name="term"/>
+            <span>Mortgage Term</span>
+            <input type="text" id="term" name="term" />
           </label>
-        </div>
-         <div>
+        </SC.TermCon>
+        <SC.RateCon>
           <label htmlFor="rate">
-          <span>Interest Rate</span>
-          <input type="text" id="rate" name="rate"/>
+            <span>Interest Rate</span>
+            <input type="text" id="rate" name="rate" />
           </label>
-        </div>
-        <div>
-            <div>
-                <span>Mortgage Type</span>
-                <label>
-                    <input type="radio" id="type" name="type" value="repayment"/>
-                    <span>Repayment</span>
-                </label>
-                <label>
-                    <input type="radio" id="type" name="type" value="interest"/>
-                    <span>Interest Only</span>
-                </label>
-            </div>
-        </div>
-        <button>Calculate Repayments</button>
+        </SC.RateCon>
+        <SC.RadioCon>
+          <div>
+            <h3>Mortgage Type</h3>
+            <label
+              className={formik.values.type === "repayment" ? "active" : ""}
+            >
+              <input
+                type="radio"
+                id="type"
+                name="type"
+                value="repayment"
+                onChange={formik.handleChange}
+                checked={formik.values.type === "repayment"}
+              />
+              <span>Repayment</span>
+            </label>
+            <label
+              className={formik.values.type === "interest" ? "active" : ""}
+            >
+              <input
+                type="radio"
+                id="type"
+                name="type"
+                value="interest"
+                onChange={formik.handleChange}
+                checked={formik.values.type === "interest"}
+              />
+              <span>Interest Only</span>
+            </label>
+          </div>
+        </SC.RadioCon>
+        <SC.SubmitBtn>
+          <img src={caclcIcon} alt="calculator" />
+          <span>Calculate Repayments</span>
+        </SC.SubmitBtn>
       </form>
     </SC.CalcFormCon>
   );
