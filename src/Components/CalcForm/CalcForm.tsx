@@ -23,29 +23,63 @@ const CalcForm: React.FC = () => {
     <SC.CalcFormCon>
       <SC.CalcTitleCon>
         <h3>Mortgage Calculator</h3>
-        <button type="button">Clear all</button>
+        <button type="button" onClick={formik.handleReset}>
+          Clear all
+        </button>
       </SC.CalcTitleCon>
       <form onSubmit={formik.handleSubmit}>
         <SC.AmountCon>
           <label htmlFor="amount">
             <span>Mortgage Amount</span>
-            <input type="text" id="amount" name="amount" onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-              {formik.touched.amount && formik.errors.amount && <SC.ErrorCon><span>{formik.errors.amount}</span></SC.ErrorCon>}
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              value={formik.values.amount}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.amount && formik.errors.amount && (
+              <SC.ErrorCon>
+                <span>{formik.errors.amount}</span>
+              </SC.ErrorCon>
+            )}
           </label>
-        
         </SC.AmountCon>
         <SC.TermCon>
           <label htmlFor="term">
             <span>Mortgage Term</span>
-            <input type="text" id="term" name="term" onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-             {formik.touched.term && formik.errors.term && <SC.ErrorCon><span>{formik.errors.term}</span></SC.ErrorCon>}
+            <input
+              type="text"
+              id="term"
+              name="term"
+              value={formik.values.term}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.term && formik.errors.term && (
+              <SC.ErrorCon>
+                <span>{formik.errors.term}</span>
+              </SC.ErrorCon>
+            )}
           </label>
         </SC.TermCon>
         <SC.RateCon>
           <label htmlFor="rate">
             <span>Interest Rate</span>
-            <input type="text" id="rate" name="rate" onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-             {formik.touched.rate && formik.errors.rate && <SC.ErrorCon><span>{formik.errors.rate}</span></SC.ErrorCon>}
+            <input
+              type="text"
+              id="rate"
+              name="rate"
+              value={formik.values.rate}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.rate && formik.errors.rate && (
+              <SC.ErrorCon>
+                <span>{formik.errors.rate}</span>
+              </SC.ErrorCon>
+            )}
           </label>
         </SC.RateCon>
         <SC.RadioCon>
@@ -79,9 +113,12 @@ const CalcForm: React.FC = () => {
               />
               <span>Interest Only</span>
             </label>
-            
           </div>
-          {formik.touched.type && formik.errors.type && <SC.ErrorCon><span>{formik.errors.type}</span></SC.ErrorCon>}
+          {formik.touched.type && formik.errors.type && (
+            <SC.ErrorCon>
+              <span>{formik.errors.type}</span>
+            </SC.ErrorCon>
+          )}
         </SC.RadioCon>
         <SC.SubmitBtn>
           <img src={caclcIcon} alt="calculator" />
