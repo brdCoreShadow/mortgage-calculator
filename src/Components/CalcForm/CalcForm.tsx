@@ -47,7 +47,7 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
       </SC.CalcTitleCon>
       <form onSubmit={formik.handleSubmit}>
        
-        <SC.AmountCon>
+        <SC.AmountCon  isError={formik.touched.amount && formik.errors.amount ? true : false}>
           <label htmlFor="amount">
             <span>Mortgage Amount</span>
             <input
@@ -57,16 +57,17 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
               value={formik.values.amount}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+             
             />
             {formik.touched.amount && formik.errors.amount && (
               <SC.ErrorCon>
-                <span>{formik.errors.amount}</span>
+                <span  style={{color:"#ff3333", fontSize:12, fontWeight:600}}>{formik.errors.amount}</span>
               </SC.ErrorCon>
             )}
           </label>
         </SC.AmountCon>
          <SC.InputsCon>
-        <SC.TermCon>
+        <SC.TermCon isError={formik.touched.term && formik.errors.term ? true : false}>
           <label htmlFor="term">
             <span>Mortgage Term</span>
             <input
@@ -79,13 +80,13 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
             />
             {formik.touched.term && formik.errors.term && (
               <SC.ErrorCon>
-                <span>{formik.errors.term}</span>
+                <span style={{color:"#ff3333", fontSize:12, fontWeight:600}}>{formik.errors.term}</span>
               </SC.ErrorCon>
             )}
           </label>
         </SC.TermCon>
       
-        <SC.RateCon>
+        <SC.RateCon isError={formik.touched.rate && formik.errors.rate ? true : false}>
           <label htmlFor="rate">
             <span>Interest Rate</span>
             <input
@@ -98,7 +99,7 @@ const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
             />
             {formik.touched.rate && formik.errors.rate && (
               <SC.ErrorCon>
-                <span>{formik.errors.rate}</span>
+                <span  style={{color:"#ff3333", fontSize:12, fontWeight:600}}>{formik.errors.rate}</span>
               </SC.ErrorCon>
             )}
           </label>

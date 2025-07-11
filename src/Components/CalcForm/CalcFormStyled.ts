@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+type Props = {
+  isError: boolean;
+};
+
 export const CalcFormCon = styled.div`
   padding-top: 32px;
   padding-bottom: 32px;
@@ -15,6 +19,13 @@ export const CalcFormCon = styled.div`
     padding-right: 40px;
 
     border-radius: 8px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 35%;
+    height: 606px;
+
+    padding-right: 76px;
   }
 `;
 
@@ -67,7 +78,7 @@ export const InputsCon = styled.div`
   }
 `;
 
-export const AmountCon = styled.div`
+export const AmountCon = styled.div<Props>`
   margin-bottom: 24px;
 
   & span {
@@ -98,10 +109,29 @@ export const AmountCon = styled.div`
       padding-left: 16px;
       padding-right: 16px;
 
-      background-color: #e4f4fd;
-      color: #4e6e7e;
+      background-color: ${({ isError }) => (isError ? "#ff3333" : "#e4f4fd")};
+      color: ${({ isError }) => (isError ? "#fff" : "#4e6e7e")};
 
       border-radius: 12px;
+    }
+
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      & input {
+        border: 1px solid #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      &::before {
+        background-color: #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      cursor: pointer;
     }
   }
 
@@ -120,13 +150,14 @@ export const AmountCon = styled.div`
 
     color: #133041;
 
-    border: 1px solid #6b94a8;
+    border: ${({ isError }) =>
+      isError ? "1px solid #ff3333" : "1px solid #6b94a8"};
 
     border-radius: 12px;
   }
 `;
 
-export const TermCon = styled.div`
+export const TermCon = styled.div<Props>`
   margin-bottom: 24px;
 
   @media (min-width: 768px) {
@@ -163,10 +194,27 @@ export const TermCon = styled.div`
       padding-left: 16px;
       padding-right: 16px;
 
-      background-color: #e4f4fd;
-      color: #4e6e7e;
+      background-color: ${({ isError }) => (isError ? "#ff3333" : "#e4f4fd")};
+      color: ${({ isError }) => (isError ? "#fff" : "#4e6e7e")};
 
       border-radius: 12px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      & input {
+        border: 1px solid #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      &::before {
+        background-color: #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      cursor: pointer;
     }
   }
 
@@ -185,21 +233,20 @@ export const TermCon = styled.div`
 
     color: #133041;
 
-    border: 1px solid #6b94a8;
+    border: ${({ isError }) =>
+      isError ? "1px solid #ff3333" : "1px solid #6b94a8"};
 
     border-radius: 12px;
   }
 `;
 
-export const RateCon = styled.div`
+export const RateCon = styled.div<Props>`
   margin-bottom: 24px;
 
-
-    @media (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 292px;
     margin-bottom: 0;
   }
-
 
   & span {
     font-size: 16px;
@@ -229,10 +276,26 @@ export const RateCon = styled.div`
       padding-left: 16px;
       padding-right: 16px;
 
-      background-color: #e4f4fd;
-      color: #4e6e7e;
+      background-color: ${({ isError }) => (isError ? "#ff3333" : "#e4f4fd")};
+      color: ${({ isError }) => (isError ? "#fff" : "#4e6e7e")};
 
       border-radius: 12px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      & input {
+        border: 1px solid #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      &::before {
+        background-color: #d8db2f;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
     }
   }
 
@@ -251,7 +314,8 @@ export const RateCon = styled.div`
 
     color: #133041;
 
-    border: 1px solid #6b94a8;
+    border: ${({ isError }) =>
+      isError ? "1px solid #ff3333" : "1px solid #6b94a8"};
 
     border-radius: 12px;
   }
@@ -260,7 +324,7 @@ export const RateCon = styled.div`
 export const RadioCon = styled.div`
   margin-bottom: 24px;
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     margin-bottom: 40px;
   }
 
@@ -323,9 +387,9 @@ export const SubmitBtn = styled.button`
 
   border-radius: 24px;
 
-@media (min-width: 768px){
+  @media (min-width: 768px) {
     width: 314px;
-}
+  }
 
   & > span {
     margin-left: 12px;
