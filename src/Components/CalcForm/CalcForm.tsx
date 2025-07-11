@@ -8,9 +8,10 @@ import { IMortgage } from "@/utils/types";
 
 type Props = {
   handleSubmit: (data: IMortgage) => void;
+  handleResetForm: ()=>void;
 };
 
-const CalcForm: React.FC<Props> = ({ handleSubmit }) => {
+const CalcForm: React.FC<Props> = ({ handleSubmit, handleResetForm }) => {
   const formik = useFormik({
     initialValues: {
       amount: "",
@@ -34,7 +35,10 @@ const CalcForm: React.FC<Props> = ({ handleSubmit }) => {
     <SC.CalcFormCon>
       <SC.CalcTitleCon>
         <h3>Mortgage Calculator</h3>
-        <button type="button" onClick={formik.handleReset}>
+        <button type="button" onClick={(e) => {
+    formik.handleReset(e);
+    handleResetForm(); // <- This clears the mortgage data
+  }}>
           Clear all
         </button>
       </SC.CalcTitleCon>

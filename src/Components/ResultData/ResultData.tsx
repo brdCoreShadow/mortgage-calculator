@@ -1,6 +1,18 @@
+import { IMortgage } from "@/utils/types";
 import * as SC from "./ResultDataStyled"
+import { handleInterestOnlyRepayment, handleMonthlyRepayment } from "@/utils/handlers";
 
-const ResultData: React.FC = () => {
+type Props = {
+    mortgage:IMortgage
+}
+
+const ResultData: React.FC<Props> = ({mortgage}) => {
+
+const {type} = mortgage
+
+const repayment = handleMonthlyRepayment(mortgage)
+const interests = handleInterestOnlyRepayment(mortgage)
+
   return (
     <SC.ResultDataCon>
       <SC.ResultDataContentCon>
@@ -13,12 +25,12 @@ const ResultData: React.FC = () => {
       </SC.ResultDataContentCon>
       <SC.DigitsCon>
         <SC.MonthlyRepayments>
-            <h4>Your monthly repayments</h4>
-            <span>$ 1,797.74</span>
+            <h4>Your monthly {type === "repayment" ? "repayments" : "interests"}</h4>
+            <span>$ {type === "repayment"  ? repayment.monthly : interests.monthly}</span>
         </SC.MonthlyRepayments>
         <SC.Total>
-            <h4>Total you'll repay over the term</h4>
-            <span>$ 539,322.94</span>
+            <h4>Total you'll {type === "repayment" ? "repay" : "pay interests"} repay over the term</h4>
+            <span>$ {type === "repayment"  ? repayment.total : interests.total}</span>
         </SC.Total>
       </SC.DigitsCon>
     </SC.ResultDataCon>

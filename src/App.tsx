@@ -9,14 +9,13 @@ function App() {
   const [mortgage, setMortgage] = useState<IMortgage | null>(null);
 
   const handleSubmit = (data: IMortgage) => setMortgage(data);
-
-  console.log(mortgage);
+const handleResetForm = () => setMortgage(null)
 
   return (
     <div>
-      <CalcForm handleSubmit={handleSubmit} />
+      <CalcForm handleSubmit={handleSubmit} handleResetForm={handleResetForm}/>
       <Result>
-        {mortgage ? <ResultData/> : <ResultEmpty/>}
+        {mortgage ? <ResultData mortgage={mortgage}/> : <ResultEmpty/>}
       </Result>
     </div>
   );
