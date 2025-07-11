@@ -18,18 +18,42 @@ const CalcForm: React.FC = () => {
     }
   });
 
-console.log(formik);
-
   return (
     <SC.CalcFormCon>
-      <div>
+      <SC.CalcTitleCon>
         <h3>Mortgage Calculator</h3>
         <button type="button">Clear all</button>
-      </div>
-      <form>
+      </SC.CalcTitleCon>
+      <form onSubmit={formik.handleSubmit}>
         <div>
           <label htmlFor="amount"></label>
+          <span>Mortgage Amount</span>
+          <input type="text" id="amount" name="amount"/>
         </div>
+         <div>
+          <label htmlFor="term"></label>
+          <span>Mortgage Term</span>
+          <input type="text" id="term" name="term"/>
+        </div>
+         <div>
+          <label htmlFor="rate"></label>
+          <span>Interest Rate</span>
+          <input type="text" id="rate" name="rate"/>
+        </div>
+        <div>
+            <div>
+                <span>Mortgage Type</span>
+                <label>
+                    <input type="radio" id="type" name="type" value="repayment"/>
+                    <span>Repayment</span>
+                </label>
+                <label>
+                    <input type="radio" id="type" name="type" value="interest"/>
+                    <span>Interest Only</span>
+                </label>
+            </div>
+        </div>
+        <button>Calculate Repayments</button>
       </form>
     </SC.CalcFormCon>
   );
